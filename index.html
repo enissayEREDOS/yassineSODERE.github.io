@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Prénom Nom – Étudiante en informatique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F1F4F9; --surface:#FFFFFF; --ink:#16213A; --muted:#55607A; --line:#D3DAE6;
+  --accent:#2748E8; --accent-ink:#FFFFFF; --mint:#128A66;
+  --head:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --body:"IBM Plex Sans","Segoe UI",system-ui,sans-serif;
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E1424; --surface:#161E33; --ink:#E8ECF7; --muted:#9AA6C3; --line:#28324D;
+    --accent:#7C93FF; --accent-ink:#0E1424; --mint:#4FD1A5; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E1424; --surface:#161E33; --ink:#E8ECF7; --muted:#9AA6C3; --line:#28324D;
+  --accent:#7C93FF; --accent-ink:#0E1424; --mint:#4FD1A5; color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 var(--body)}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:60rem;margin:0 auto;padding:0 1.25rem}
+header.top{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 0}
+nav a{margin-right:1.25rem;color:var(--muted);text-decoration:none;font-weight:500}
+nav a:hover{color:var(--ink)}
+#theme{background:none;border:1px solid var(--line);color:var(--ink);border-radius:999px;padding:.35rem .9rem;font:inherit;font-size:.9rem;cursor:pointer}
+
+.hero{padding:4rem 0 3.5rem}
+.hero h1{font:800 clamp(2.8rem,9vw,6rem)/.98 var(--head);letter-spacing:-.035em;margin:0 0 1.5rem}
+.hero p{max-width:34rem;font-size:1.2rem;color:var(--muted);margin:0 0 2rem}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-ink);padding:.8rem 1.4rem;border-radius:8px;text-decoration:none;font-weight:500;margin:0 .6rem .6rem 0}
+.btn.alt{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.status{display:inline-flex;gap:.5rem;align-items:center;font-size:.95rem;color:var(--muted);margin-bottom:1.5rem}
+.status i{width:.6rem;height:.6rem;border-radius:50%;background:var(--mint);display:inline-block}
+
+section{padding:3rem 0;border-top:1px solid var(--line)}
+h2{font:700 1.9rem/1.2 var(--head);letter-spacing:-.02em;margin:0 0 1.5rem}
+.filters{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem}
+.filters button{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:.35rem 1rem;font:inherit;font-size:.95rem;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+
+.project{display:grid;grid-template-columns:11rem 1fr;gap:1.5rem;padding:1.75rem 0;border-top:1px solid var(--line)}
+.project[hidden]{display:none}
+.meta{color:var(--muted);font-size:.95rem}
+.meta strong{display:block;color:var(--ink);font-weight:500}
+.project h3{font:700 1.35rem/1.3 var(--head);margin:0 0 .5rem}
+.project p{margin:.4rem 0;max-width:40rem}
+.project dt{font-weight:500;display:inline}
+.project dd{display:inline;margin:0}
+.project .row{margin:.4rem 0;max-width:40rem}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem;margin:.8rem 0 0;padding:0;list-style:none}
+.tags li{font-size:.85rem;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:.1rem .55rem}
+
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:2rem}
+.skills h3{font:700 1.1rem var(--head);margin:0 0 .5rem}
+.skills ul{margin:0;padding-left:1.1rem;color:var(--muted)}
+
+.timeline{list-style:none;margin:0;padding:0}
+.timeline li{display:grid;grid-template-columns:11rem 1fr;gap:1.5rem;padding:1rem 0}
+.timeline b{font-weight:500}
+.contact p{max-width:34rem}
+footer{padding:2rem 0 3rem;color:var(--muted);font-size:.9rem}
+@media (max-width:40rem){
+  .project,.timeline li{grid-template-columns:1fr;gap:.4rem}
+  nav{display:none}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <nav aria-label="Navigation principale">
+      <a href="#projets">Projets</a><a href="#competences">Compétences</a><a href="#parcours">Parcours</a><a href="#contact">Contact</a>
+    </nav>
+    <button id="theme" type="button" aria-label="Changer de thème">Thème</button>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div class="status"><i></i> Recherche un stage de [durée] à partir de [mois année]</div>
+      <h1>Prénom Nom</h1>
+      <p>Étudiante en [Licence / BUT / Master] informatique à [école ou université]. J’aime [développement web, data, cybersécurité…] et je construis des projets que je peux montrer, tester et expliquer.</p>
+      <a class="btn" href="#projets">Voir mes projets</a>
+      <a class="btn alt" href="cv.pdf">Télécharger mon CV</a>
+    </div>
+
+    <section id="projets">
+      <h2>Projets</h2>
+      <div class="filters" role="group" aria-label="Filtrer les projets par technologie" id="filters"></div>
+      <div id="list">
+        <article class="project" data-tags="Python,SQL">
+          <div class="meta"><strong>Projet de [école]</strong>[mois année] · équipe de 4</div>
+          <div>
+            <h3>Nom du projet 1</h3>
+            <p>Une phrase simple : ce que fait le projet et pour qui.</p>
+            <div class="row"><dl><dt>Mon rôle : </dt><dd>ce que j’ai fait précisément (base de données, interface, tests…).</dd></dl></div>
+            <div class="row"><dl><dt>Résultat : </dt><dd>note, nombre d’utilisateurs, ce que j’ai appris.</dd></dl></div>
+            <ul class="tags"><li>Python</li><li>SQL</li></ul>
+            <p><a href="https://github.com/votre-pseudo/projet-1">Code sur GitHub</a></p>
+          </div>
+        </article>
+        <article class="project" data-tags="JavaScript,HTML/CSS">
+          <div class="meta"><strong>Projet personnel</strong>[mois année] · seule</div>
+          <div>
+            <h3>Nom du projet 2</h3>
+            <p>Une phrase simple : le problème que vous avez voulu résoudre.</p>
+            <div class="row"><dl><dt>Mon rôle : </dt><dd>conception, développement et mise en ligne.</dd></dl></div>
+            <div class="row"><dl><dt>Résultat : </dt><dd>lien de démonstration, retours reçus.</dd></dl></div>
+            <ul class="tags"><li>JavaScript</li><li>HTML/CSS</li></ul>
+            <p><a href="https://votre-pseudo.github.io/projet-2">Voir la démo</a></p>
+          </div>
+        </article>
+        <article class="project" data-tags="Java,SQL">
+          <div class="meta"><strong>Stage chez [entreprise]</strong>[mois année] · [durée]</div>
+          <div>
+            <h3>Nom de la mission</h3>
+            <p>Le contexte de la mission et ce qu’on attendait de vous.</p>
+            <div class="row"><dl><dt>Mon rôle : </dt><dd>tâches réalisées, outils utilisés.</dd></dl></div>
+            <div class="row"><dl><dt>Résultat : </dt><dd>un chiffre ou un retour concret du tuteur.</dd></dl></div>
+            <ul class="tags"><li>Java</li><li>SQL</li></ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="competences">
+      <h2>Compétences</h2>
+      <div class="skills">
+        <div><h3>Langages</h3><ul><li>Python</li><li>JavaScript</li><li>Java</li><li>SQL</li></ul></div>
+        <div><h3>Web</h3><ul><li>HTML et CSS</li><li>React, Node.js (si vous les connaissez)</li></ul></div>
+        <div><h3>Outils</h3><ul><li>Git et GitHub</li><li>Linux</li><li>VS Code</li></ul></div>
+        <div><h3>Langues</h3><ul><li>Français : langue maternelle</li><li>Anglais : [niveau]</li></ul></div>
+      </div>
+    </section>
+
+    <section id="parcours">
+      <h2>Parcours</h2>
+      <ul class="timeline">
+        <li><span class="meta">[2024 – aujourd’hui]</span><div><b>[Diplôme en cours]</b>, [école]<br><span class="meta">Matières clés, projets marquants.</span></div></li>
+        <li><span class="meta">[2024]</span><div><b>Stage : [poste]</b>, [entreprise]<br><span class="meta">Une phrase sur la mission.</span></div></li>
+        <li><span class="meta">[2021 – 2024]</span><div><b>[Bac ou diplôme précédent]</b>, [établissement]</div></li>
+      </ul>
+    </section>
+
+    <section id="contact" class="contact">
+      <h2>Me contacter</h2>
+      <p>Je réponds en général sous 48 heures. Écrivez-moi pour un stage, une alternance ou simplement pour discuter d’un projet.</p>
+      <a class="btn" href="mailto:prenom.nom@email.fr">prenom.nom@email.fr</a>
+      <a class="btn alt" href="https://www.linkedin.com/in/votre-profil">LinkedIn</a>
+      <a class="btn alt" href="https://github.com/votre-pseudo">GitHub</a>
+    </section>
+  </main>
+  <footer>© <span id="year"></span> Prénom Nom</footer>
+</div>
+
+<script>
+(function(){
+  var items=[].slice.call(document.querySelectorAll(".project"));
+  var set={};
+  items.forEach(function(p){p.dataset.tags.split(",").forEach(function(t){set[t]=1})});
+  var tags=["Tous"].concat(Object.keys(set).sort());
+  var box=document.getElementById("filters");
+  tags.forEach(function(t,i){
+    var b=document.createElement("button");
+    b.type="button";b.textContent=t;b.setAttribute("aria-pressed",i===0?"true":"false");
+    b.addEventListener("click",function(){
+      [].forEach.call(box.children,function(c){c.setAttribute("aria-pressed",c===b?"true":"false")});
+      items.forEach(function(p){p.hidden=!(t==="Tous"||p.dataset.tags.split(",").indexOf(t)>-1)});
+    });
+    box.appendChild(b);
+  });
+  document.getElementById("year").textContent=new Date().getFullYear();
+  var root=document.documentElement;
+  document.getElementById("theme").addEventListener("click",function(){
+    var dark=root.dataset.theme?root.dataset.theme==="dark":matchMedia("(prefers-color-scheme: dark)").matches;
+    root.dataset.theme=dark?"light":"dark";
+  });
+})();
+</script>
+</body>
+</html>
