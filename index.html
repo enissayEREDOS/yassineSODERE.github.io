@@ -1,194 +1,420 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="dark">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Prénom Nom – Étudiante en informatique</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yassine SODERE · Étudiante-ingénieure Data & IA</title>
+<meta name="description" content="Portfolio de Yassine SODERE, étudiante-ingénieure en informatique (Data & IA) à Polytech Nantes.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#F1F4F9; --surface:#FFFFFF; --ink:#16213A; --muted:#55607A; --line:#D3DAE6;
-  --accent:#2748E8; --accent-ink:#FFFFFF; --mint:#128A66;
-  --head:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
-  --body:"IBM Plex Sans","Segoe UI",system-ui,sans-serif;
-  color-scheme:light;
-  box-sizing:border-box;
-  padding-top:env(safe-area-inset-top,0px);
-  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#0f2029; --surface:#162e39; --surface-2:#1c3844; --line:#2a4955;
+  --text:#e9f1ee; --muted:#9db5b3; --gold:#f2b84b; --green:#3fbf9a; --on-gold:#1a1405;
+  --radius:18px; --display:'Bricolage Grotesque','Trebuchet MS',system-ui,sans-serif;
+  --body:'IBM Plex Sans','Segoe UI',system-ui,sans-serif;
 }
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){
-    --bg:#0E1424; --surface:#161E33; --ink:#E8ECF7; --muted:#9AA6C3; --line:#28324D;
-    --accent:#7C93FF; --accent-ink:#0E1424; --mint:#4FD1A5; color-scheme:dark;
-  }
+:root[data-theme="light"]{
+  --bg:#f5f6f1; --surface:#ffffff; --surface-2:#eaf0ec; --line:#cfdad4;
+  --text:#12303a; --muted:#51696b; --gold:#b9770e; --green:#0a7d62; --on-gold:#ffffff;
 }
-:root[data-theme="dark"]{
-  --bg:#0E1424; --surface:#161E33; --ink:#E8ECF7; --muted:#9AA6C3; --line:#28324D;
-  --accent:#7C93FF; --accent-ink:#0E1424; --mint:#4FD1A5; color-scheme:dark;
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{background:var(--bg);color:var(--text);font:400 1.05rem/1.65 var(--body);transition:background .3s,color .3s}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:6px}
+.wrap{width:min(1080px,100% - 2.5rem);margin-inline:auto}
+section{padding:5.5rem 0}
+h1,h2,h3{font-family:var(--display);line-height:1.1;letter-spacing:-.02em}
+h2{font-size:clamp(1.9rem,4vw,2.7rem);font-weight:800;margin-bottom:.6rem}
+.lead{color:var(--muted);max-width:60ch;margin-bottom:2.2rem}
+
+/* Navigation */
+header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font:800 1.2rem var(--display);text-decoration:none}
+.logo span{color:var(--gold)}
+.links{display:flex;gap:1.4rem;align-items:center;list-style:none;padding:0}
+.links a{text-decoration:none;color:var(--muted);font-weight:500;font-size:.95rem;padding:.3rem 0;border-bottom:2px solid transparent;transition:.2s}
+.links a:hover,.links a.active{color:var(--text);border-color:var(--gold)}
+.icon-btn{background:var(--surface);color:var(--text);border:1px solid var(--line);border-radius:999px;width:40px;height:40px;cursor:pointer;font-size:1.1rem}
+.burger{display:none}
+@media(max-width:820px){
+  .burger{display:inline-block}
+  .links{position:absolute;top:64px;left:0;right:0;flex-direction:column;background:var(--bg);padding:1rem 1.25rem 1.5rem;border-bottom:1px solid var(--line);display:none;align-items:flex-start}
+  .links.open{display:flex}
 }
-*,*::before,*::after{box-sizing:inherit}
-html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 var(--body)}
-a{color:var(--accent)}
-:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
-.wrap{max-width:60rem;margin:0 auto;padding:0 1.25rem}
-header.top{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 0}
-nav a{margin-right:1.25rem;color:var(--muted);text-decoration:none;font-weight:500}
-nav a:hover{color:var(--ink)}
-#theme{background:none;border:1px solid var(--line);color:var(--ink);border-radius:999px;padding:.35rem .9rem;font:inherit;font-size:.9rem;cursor:pointer}
 
-.hero{padding:4rem 0 3.5rem}
-.hero h1{font:800 clamp(2.8rem,9vw,6rem)/.98 var(--head);letter-spacing:-.035em;margin:0 0 1.5rem}
-.hero p{max-width:34rem;font-size:1.2rem;color:var(--muted);margin:0 0 2rem}
-.btn{display:inline-block;background:var(--accent);color:var(--accent-ink);padding:.8rem 1.4rem;border-radius:8px;text-decoration:none;font-weight:500;margin:0 .6rem .6rem 0}
-.btn.alt{background:transparent;color:var(--ink);border:1px solid var(--line)}
-.status{display:inline-flex;gap:.5rem;align-items:center;font-size:.95rem;color:var(--muted);margin-bottom:1.5rem}
-.status i{width:.6rem;height:.6rem;border-radius:50%;background:var(--mint);display:inline-block}
+/* Hero */
+.hero{position:relative;overflow:hidden;padding:6rem 0 5rem;min-height:82vh;display:flex;align-items:center}
+#net{position:absolute;inset:0;width:100%;height:100%}
+.hero .wrap{position:relative}
+.hero h1{font-size:clamp(2.8rem,9vw,6.2rem);font-weight:800;max-width:11ch}
+.hero .role{font:600 clamp(1.1rem,2.6vw,1.6rem) var(--display);margin:1.2rem 0 .8rem;color:var(--green);min-height:1.5em}
+.caret{display:inline-block;width:3px;height:1.1em;background:var(--gold);margin-left:4px;vertical-align:-.15em;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.hero p.lead{margin-bottom:2rem}
+.btns{display:flex;gap:.8rem;flex-wrap:wrap}
+.btn{display:inline-block;padding:.85rem 1.5rem;border-radius:999px;font-weight:600;text-decoration:none;border:2px solid var(--gold);transition:transform .2s,background .2s}
+.btn.primary{background:var(--gold);color:var(--on-gold)}
+.btn.ghost{color:var(--text)}
+.btn:hover{transform:translateY(-3px)}
+.facts{display:flex;gap:2rem;flex-wrap:wrap;margin-top:3rem;color:var(--muted);font-size:.95rem}
+.facts strong{display:block;color:var(--text);font:700 1.15rem var(--display)}
 
-section{padding:3rem 0;border-top:1px solid var(--line)}
-h2{font:700 1.9rem/1.2 var(--head);letter-spacing:-.02em;margin:0 0 1.5rem}
-.filters{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem}
-.filters button{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:.35rem 1rem;font:inherit;font-size:.95rem;cursor:pointer}
-.filters button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+/* À propos */
+.about{display:grid;grid-template-columns:1.3fr 1fr;gap:3rem;align-items:start}
+@media(max-width:820px){.about{grid-template-columns:1fr}}
+.about p+p{margin-top:1rem}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:1.6rem}
+.panel h3{font-size:1.15rem;margin-bottom:.8rem}
+.panel li{list-style:none;padding:.35rem 0;color:var(--muted)}
+.panel li b{color:var(--text);font-weight:600}
 
-.project{display:grid;grid-template-columns:11rem 1fr;gap:1.5rem;padding:1.75rem 0;border-top:1px solid var(--line)}
-.project[hidden]{display:none}
-.meta{color:var(--muted);font-size:.95rem}
-.meta strong{display:block;color:var(--ink);font-weight:500}
-.project h3{font:700 1.35rem/1.3 var(--head);margin:0 0 .5rem}
-.project p{margin:.4rem 0;max-width:40rem}
-.project dt{font-weight:500;display:inline}
-.project dd{display:inline;margin:0}
-.project .row{margin:.4rem 0;max-width:40rem}
-.tags{display:flex;flex-wrap:wrap;gap:.4rem;margin:.8rem 0 0;padding:0;list-style:none}
-.tags li{font-size:.85rem;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:.1rem .55rem}
+/* Parcours */
+.timeline{position:relative;padding-left:2rem;border-left:2px solid var(--line)}
+.step{position:relative;margin-bottom:2.2rem}
+.step::before{content:"";position:absolute;left:calc(-2rem - 8px);top:.45rem;width:14px;height:14px;border-radius:50%;background:var(--bg);border:3px solid var(--gold)}
+.step.edu::before{border-color:var(--green)}
+.step time{color:var(--muted);font-size:.9rem}
+.step h3{font-size:1.3rem;margin:.2rem 0}
+.step .where{color:var(--green);font-weight:500}
+.step ul{margin:.6rem 0 0 1.1rem;color:var(--muted)}
 
-.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:2rem}
-.skills h3{font:700 1.1rem var(--head);margin:0 0 .5rem}
-.skills ul{margin:0;padding-left:1.1rem;color:var(--muted)}
+/* Projets */
+.filters{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.6rem}
+.chip{border:1px solid var(--line);background:transparent;color:var(--muted);padding:.4rem 1rem;border-radius:999px;cursor:pointer;font:500 .92rem var(--body);transition:.2s}
+.chip:hover{color:var(--text)}
+.chip[aria-pressed="true"]{background:var(--gold);color:var(--on-gold);border-color:var(--gold)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:1.3rem}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:1.6rem;display:flex;flex-direction:column;gap:.7rem;transition:transform .25s,border-color .25s}
+.card:hover{transform:translateY(-4px);border-color:var(--gold)}
+.card .meta{color:var(--muted);font-size:.88rem}
+.card h3{font-size:1.25rem}
+.card p{color:var(--muted);font-size:.98rem}
+.tags{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:auto;padding-top:.4rem}
+.tag{background:var(--surface-2);border-radius:8px;padding:.15rem .6rem;font-size:.82rem}
+.card a.more{color:var(--gold);font-weight:600;text-decoration:none}
+.card a.more:hover{text-decoration:underline}
 
-.timeline{list-style:none;margin:0;padding:0}
-.timeline li{display:grid;grid-template-columns:11rem 1fr;gap:1.5rem;padding:1rem 0}
-.timeline b{font-weight:500}
-.contact p{max-width:34rem}
-footer{padding:2rem 0 3rem;color:var(--muted);font-size:.9rem}
-@media (max-width:40rem){
-  .project,.timeline li{grid-template-columns:1fr;gap:.4rem}
-  nav{display:none}
-}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+/* Modules */
+.acc{display:grid;gap:.8rem}
+details{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:0 1.4rem;transition:border-color .2s}
+details[open]{border-color:var(--green)}
+summary{cursor:pointer;padding:1.1rem 0;font:700 1.1rem var(--display);list-style:none;display:flex;justify-content:space-between;gap:1rem}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--gold);font-size:1.4rem;line-height:1;transition:transform .25s}
+details[open] summary::after{transform:rotate(45deg)}
+summary small{font:400 .88rem var(--body);color:var(--muted);margin-left:.6rem}
+details .body{padding:0 0 1.2rem;color:var(--muted)}
+details ul{margin:.6rem 0 0 1.1rem}
+
+/* Compétences */
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.3rem}
+.skills .tags{margin-top:.4rem}
+
+/* Contact */
+.contact{text-align:left}
+.contact .big{font:800 clamp(1.4rem,4vw,2.4rem) var(--display);word-break:break-word}
+footer{border-top:1px solid var(--line);padding:2rem 0;color:var(--muted);font-size:.9rem}
+
+/* Apparition au défilement (uniquement la première fois) */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s,transform .6s}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header class="top">
-    <nav aria-label="Navigation principale">
-      <a href="#projets">Projets</a><a href="#competences">Compétences</a><a href="#parcours">Parcours</a><a href="#contact">Contact</a>
-    </nav>
-    <button id="theme" type="button" aria-label="Changer de thème">Thème</button>
-  </header>
 
-  <main>
-    <div class="hero">
-      <div class="status"><i></i> Recherche un stage de [durée] à partir de [mois année]</div>
-      <h1>Prénom Nom</h1>
-      <p>Étudiante en [Licence / BUT / Master] informatique à [école ou université]. J’aime [développement web, data, cybersécurité…] et je construis des projets que je peux montrer, tester et expliquer.</p>
-      <a class="btn" href="#projets">Voir mes projets</a>
-      <a class="btn alt" href="cv.pdf">Télécharger mon CV</a>
+<header>
+  <nav class="wrap" aria-label="Navigation principale">
+    <a class="logo" href="#top">Yassine<span>.</span>S</a>
+    <ul class="links" id="links">
+      <li><a href="#apropos">À propos</a></li>
+      <li><a href="#parcours">Parcours</a></li>
+      <li><a href="#projets">Projets</a></li>
+      <li><a href="#cours">Modules</a></li>
+      <li><a href="#competences">Compétences</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><button class="icon-btn" id="theme" aria-label="Changer de thème">☾</button></li>
+    </ul>
+    <button class="icon-btn burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <canvas id="net" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <h1>Yassine SODERE</h1>
+      <p class="role"><span id="typed"></span><span class="caret"></span></p>
+      <p class="lead">Étudiante en cycle ingénieur à Polytech Nantes. J’aime comprendre les données, les analyser et construire des logiciels fiables autour d’elles.</p>
+      <div class="btns">
+        <a class="btn primary" href="#projets">Voir mes projets</a>
+        <a class="btn ghost" href="#contact">Me contacter</a>
+      </div>
+      <div class="facts">
+        <div><strong>Polytech Nantes</strong>3ᵉ année d’ingénieur</div>
+        <div><strong>Elite IT Partners</strong>Stage développeuse, 2024</div>
+        <div><strong>Java · Python · R · SQL</strong>Langages principaux</div>
+      </div>
     </div>
+  </section>
 
-    <section id="projets">
-      <h2>Projets</h2>
-      <div class="filters" role="group" aria-label="Filtrer les projets par technologie" id="filters"></div>
-      <div id="list">
-        <article class="project" data-tags="Python,SQL">
-          <div class="meta"><strong>Projet de [école]</strong>[mois année] · équipe de 4</div>
-          <div>
-            <h3>Nom du projet 1</h3>
-            <p>Une phrase simple : ce que fait le projet et pour qui.</p>
-            <div class="row"><dl><dt>Mon rôle : </dt><dd>ce que j’ai fait précisément (base de données, interface, tests…).</dd></dl></div>
-            <div class="row"><dl><dt>Résultat : </dt><dd>note, nombre d’utilisateurs, ce que j’ai appris.</dd></dl></div>
-            <ul class="tags"><li>Python</li><li>SQL</li></ul>
-            <p><a href="https://github.com/votre-pseudo/projet-1">Code sur GitHub</a></p>
-          </div>
-        </article>
-        <article class="project" data-tags="JavaScript,HTML/CSS">
-          <div class="meta"><strong>Projet personnel</strong>[mois année] · seule</div>
-          <div>
-            <h3>Nom du projet 2</h3>
-            <p>Une phrase simple : le problème que vous avez voulu résoudre.</p>
-            <div class="row"><dl><dt>Mon rôle : </dt><dd>conception, développement et mise en ligne.</dd></dl></div>
-            <div class="row"><dl><dt>Résultat : </dt><dd>lien de démonstration, retours reçus.</dd></dl></div>
-            <ul class="tags"><li>JavaScript</li><li>HTML/CSS</li></ul>
-            <p><a href="https://votre-pseudo.github.io/projet-2">Voir la démo</a></p>
-          </div>
-        </article>
-        <article class="project" data-tags="Java,SQL">
-          <div class="meta"><strong>Stage chez [entreprise]</strong>[mois année] · [durée]</div>
-          <div>
-            <h3>Nom de la mission</h3>
-            <p>Le contexte de la mission et ce qu’on attendait de vous.</p>
-            <div class="row"><dl><dt>Mon rôle : </dt><dd>tâches réalisées, outils utilisés.</dd></dl></div>
-            <div class="row"><dl><dt>Résultat : </dt><dd>un chiffre ou un retour concret du tuteur.</dd></dl></div>
-            <ul class="tags"><li>Java</li><li>SQL</li></ul>
-          </div>
-        </article>
+  <section id="apropos">
+    <div class="wrap about">
+      <div class="reveal">
+        <h2>À propos</h2>
+        <p>Je suis formée en informatique entre le Burkina Faso (Université Joseph KI-ZERBO) et la France (Polytech Nantes). Mon parcours m’a donné de solides bases en programmation, algorithmique, bases de données et développement logiciel.</p>
+        <p>Ce qui m’attire : explorer, analyser et visualiser des données pour en tirer des décisions concrètes. Je travaille de façon autonome et rigoureuse, et j’apprécie le travail en équipe.</p>
+        <p>Trésorière du Club Informatique de mon université pendant 2 ans, j’y ai géré un budget, organisé des événements et coordonné une équipe.</p>
       </div>
-    </section>
+      <aside class="panel reveal">
+        <h3>En bref</h3>
+        <ul>
+          <li><b>Formation :</b> ingénieure informatique, Data & IA</li>
+          <li><b>Langues :</b> français (langue maternelle), anglais B1</li>
+          <li><b>Sport :</b> triple saut, athlétisme</li>
+          <li><b>Loisirs :</b> veille technologique, cuisine du monde, voyages, cinéma</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
 
-    <section id="competences">
-      <h2>Compétences</h2>
-      <div class="skills">
-        <div><h3>Langages</h3><ul><li>Python</li><li>JavaScript</li><li>Java</li><li>SQL</li></ul></div>
-        <div><h3>Web</h3><ul><li>HTML et CSS</li><li>React, Node.js (si vous les connaissez)</li></ul></div>
-        <div><h3>Outils</h3><ul><li>Git et GitHub</li><li>Linux</li><li>VS Code</li></ul></div>
-        <div><h3>Langues</h3><ul><li>Français : langue maternelle</li><li>Anglais : [niveau]</li></ul></div>
-      </div>
-    </section>
+  <section id="parcours">
+    <div class="wrap">
+      <h2 class="reveal">Parcours</h2>
+      <p class="lead reveal">Expériences et formations, de la plus récente à la plus ancienne.</p>
+      <div class="timeline" id="timeline"></div>
+    </div>
+  </section>
 
-    <section id="parcours">
-      <h2>Parcours</h2>
-      <ul class="timeline">
-        <li><span class="meta">[2024 – aujourd’hui]</span><div><b>[Diplôme en cours]</b>, [école]<br><span class="meta">Matières clés, projets marquants.</span></div></li>
-        <li><span class="meta">[2024]</span><div><b>Stage : [poste]</b>, [entreprise]<br><span class="meta">Une phrase sur la mission.</span></div></li>
-        <li><span class="meta">[2021 – 2024]</span><div><b>[Bac ou diplôme précédent]</b>, [établissement]</div></li>
-      </ul>
-    </section>
+  <section id="projets">
+    <div class="wrap">
+      <h2 class="reveal">Projets</h2>
+      <p class="lead reveal">Projets académiques et personnels. Filtrez par technologie.</p>
+      <div class="filters" id="filters" role="group" aria-label="Filtrer les projets"></div>
+      <div class="grid" id="projects"></div>
+    </div>
+  </section>
 
-    <section id="contact" class="contact">
-      <h2>Me contacter</h2>
-      <p>Je réponds en général sous 48 heures. Écrivez-moi pour un stage, une alternance ou simplement pour discuter d’un projet.</p>
-      <a class="btn" href="mailto:prenom.nom@email.fr">prenom.nom@email.fr</a>
-      <a class="btn alt" href="https://www.linkedin.com/in/votre-profil">LinkedIn</a>
-      <a class="btn alt" href="https://github.com/votre-pseudo">GitHub</a>
-    </section>
-  </main>
-  <footer>© <span id="year"></span> Prénom Nom</footer>
-</div>
+  <section id="cours">
+    <div class="wrap">
+      <h2 class="reveal">Modules de cours</h2>
+      <p class="lead reveal">Ce que j’étudie à Polytech Nantes, avec les projets et rendus associés. Cliquez sur un module pour le détail.</p>
+      <div class="acc" id="courses"></div>
+    </div>
+  </section>
+
+  <section id="competences">
+    <div class="wrap">
+      <h2 class="reveal">Compétences</h2>
+      <p class="lead reveal">Les outils et méthodes que j’utilise au quotidien.</p>
+      <div class="skills" id="skills"></div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap contact">
+      <h2 class="reveal">Contact</h2>
+      <p class="lead reveal">Un stage, un projet, une question ? Écrivez-moi, je réponds vite.</p>
+      <a class="big reveal" href="mailto:yassinesodere23@gmail.com">yassinesodere23@gmail.com</a>
+      <p class="reveal" style="margin-top:1rem;color:var(--muted)">Nantes, France</p>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">© <span id="year"></span> Yassine SODERE</div></footer>
 
 <script>
-(function(){
-  var items=[].slice.call(document.querySelectorAll(".project"));
-  var set={};
-  items.forEach(function(p){p.dataset.tags.split(",").forEach(function(t){set[t]=1})});
-  var tags=["Tous"].concat(Object.keys(set).sort());
-  var box=document.getElementById("filters");
-  tags.forEach(function(t,i){
-    var b=document.createElement("button");
-    b.type="button";b.textContent=t;b.setAttribute("aria-pressed",i===0?"true":"false");
-    b.addEventListener("click",function(){
-      [].forEach.call(box.children,function(c){c.setAttribute("aria-pressed",c===b?"true":"false")});
-      items.forEach(function(p){p.hidden=!(t==="Tous"||p.dataset.tags.split(",").indexOf(t)>-1)});
+/* =====================================================================
+   MODIFIER ICI : tout le contenu du site vient de ces listes.
+   Pour ajouter un projet ou un module, copiez un bloc { ... }, collez-le
+   à la suite (sans oublier la virgule) et changez les textes.
+   ===================================================================== */
+
+const ROLES = ["Étudiante-ingénieure en Data & IA", "Développeuse logiciel", "Curieuse de la donnée"];
+
+const TIMELINE = [
+  { type:"edu", date:"En cours", title:"Diplôme d’ingénieure en informatique", where:"Polytech Nantes",
+    items:["3ᵉ année : développement logiciel, gestion de projet, analyse des besoins"] },
+  { type:"edu", date:"2024 – 2025", title:"Master 1 Informatique", where:"Université Joseph KI-ZERBO, Ouagadougou", items:[] },
+  { type:"work", date:"Juil. – Oct. 2024", title:"Développeuse stagiaire", where:"Elite IT Partners, Ouagadougou",
+    items:["Application RH pour entreprises B2B : modules employés, congés, recrutement et paie (Java, Python, SQL)",
+           "Analyse des besoins et rédaction du cahier des charges fonctionnel",
+           "Travail en équipe agile avec Git, documentation technique et tests"] },
+  { type:"edu", date:"2019 – 2022", title:"Licence Informatique", where:"Université Joseph KI-ZERBO, Ouagadougou",
+    items:["Bases de la programmation, des bases de données et des systèmes"] }
+];
+
+const PROJECTS = [
+  { title:"Application web full stack", date:"Avr. – Juin 2026",
+    desc:"Analyse des besoins, conception UML, modélisation de la base de données, front-end et back-end avec une API REST.",
+    tags:["JavaScript","Node.js","SQL","Web"], link:"" },
+  { title:"Hackathon Java : simulateur de monde de jeu", date:"Mai 2026",
+    desc:"Conception orientée objet et modélisation UML réalisées en équipe en une seule journée.",
+    tags:["Java","UML"], link:"" },
+  { title:"Optimisation des feux de circulation", date:"Nov. 2025 – Janv. 2026",
+    desc:"Algorithme d’optimisation des cycles de feux, inspiré du Google Hash Code.",
+    tags:["Python","Algorithmique"], link:"" },
+  { title:"Applications réseaux client-serveur", date:"2026",
+    desc:"Protocole client-serveur avec sockets TCP/UDP, serveurs séquentiel et parallèle (fork).",
+    tags:["C","Linux","Réseaux"], link:"" },
+  { title:"Optimisation de requêtes Oracle", date:"2026",
+    desc:"Analyse de plans d’exécution, création d’index et mise à jour des statistiques.",
+    tags:["SQL","Oracle"], link:"" },
+  { title:"Analyse exploratoire de données", date:"2026",
+    desc:"Modélisation environnementale avec OpenLCA et analyse du bilan carbone de Polytech Nantes sous Excel.",
+    tags:["Data","Excel"], link:"" }
+];
+
+/* Modules : remplacez / complétez avec vos vrais cours et rendus. */
+const COURSES = [
+  { name:"Réseaux", period:"2026",
+    desc:"Protocoles et programmation réseau.",
+    work:["Client-serveur TCP/UDP en C","Serveur parallèle avec fork()"] },
+  { name:"Bases de données avancées", period:"2026",
+    desc:"Optimisation et administration d’Oracle.",
+    work:["Plans d’exécution, index, statistiques"] },
+  { name:"Analyse de données", period:"2026",
+    desc:"Exploration, modélisation et visualisation.",
+    work:["Bilan carbone de Polytech Nantes (OpenLCA, Excel)"] },
+  { name:"Génie logiciel et gestion de projet", period:"2025 – 2026",
+    desc:"Conception, UML, travail en équipe.",
+    work:["Application web full stack","Hackathon Java"] }
+];
+
+const SKILLS = {
+  "Langages":["Java","Python","R","C","JavaScript","HTML5","CSS3","SQL"],
+  "Data & visualisation":["Visualisation de données","R","NumPy","Anaconda","Excel"],
+  "Développement":["POO","Algorithmique","Structures de données","API REST","Client-serveur"],
+  "Bases de données & réseaux":["Oracle","Optimisation de requêtes","Sockets","TCP/IP","UDP","Linux"],
+  "Outils & méthodes":["Git / GitHub","Eclipse","Anaconda","UML","Méthodes agiles","Cahier des charges","Documentation"]
+};
+
+/* ===================== Code du site (pas besoin d’y toucher) ===================== */
+const $ = s => document.querySelector(s);
+const esc = t => String(t).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const tagsHtml = a => `<div class="tags">${a.map(t=>`<span class="tag">${esc(t)}</span>`).join("")}</div>`;
+
+// Thème (clair / sombre), mémorisé si le navigateur l’autorise
+const root = document.documentElement;
+try { const s = localStorage.getItem("theme"); if (s) root.dataset.theme = s; } catch(e){}
+const setIcon = () => $("#theme").textContent = root.dataset.theme === "dark" ? "☾" : "☀";
+setIcon();
+$("#theme").onclick = () => {
+  root.dataset.theme = root.dataset.theme === "dark" ? "light" : "dark";
+  try { localStorage.setItem("theme", root.dataset.theme); } catch(e){}
+  setIcon();
+};
+
+// Menu mobile
+$("#burger").onclick = e => {
+  const open = $("#links").classList.toggle("open");
+  e.currentTarget.setAttribute("aria-expanded", open);
+};
+$("#links").addEventListener("click", e => { if (e.target.tagName === "A") $("#links").classList.remove("open"); });
+
+// Contenu
+$("#year").textContent = new Date().getFullYear();
+
+$("#timeline").innerHTML = TIMELINE.map(s => `
+  <div class="step ${s.type} reveal">
+    <time>${esc(s.date)}</time>
+    <h3>${esc(s.title)}</h3>
+    <div class="where">${esc(s.where)}</div>
+    ${s.items.length ? `<ul>${s.items.map(i=>`<li>${esc(i)}</li>`).join("")}</ul>` : ""}
+  </div>`).join("");
+
+const allTags = ["Tous", ...new Set(PROJECTS.flatMap(p => p.tags))];
+$("#filters").innerHTML = allTags.map((t,i) => `<button class="chip" aria-pressed="${i===0}" data-tag="${esc(t)}">${esc(t)}</button>`).join("");
+function renderProjects(tag="Tous"){
+  $("#projects").innerHTML = PROJECTS.filter(p => tag==="Tous" || p.tags.includes(tag)).map(p => `
+    <article class="card">
+      <div class="meta">${esc(p.date)}</div>
+      <h3>${esc(p.title)}</h3>
+      <p>${esc(p.desc)}</p>
+      ${tagsHtml(p.tags)}
+      ${p.link ? `<a class="more" href="${esc(p.link)}" target="_blank" rel="noopener">Voir le code</a>` : ""}
+    </article>`).join("");
+}
+renderProjects();
+$("#filters").addEventListener("click", e => {
+  const b = e.target.closest(".chip"); if (!b) return;
+  document.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", c === b));
+  renderProjects(b.dataset.tag);
+});
+
+$("#courses").innerHTML = COURSES.map(c => `
+  <details class="reveal">
+    <summary><span>${esc(c.name)}<small>${esc(c.period)}</small></span></summary>
+    <div class="body"><p>${esc(c.desc)}</p>
+      <ul>${c.work.map(w=>`<li>${esc(w)}</li>`).join("")}</ul></div>
+  </details>`).join("");
+
+$("#skills").innerHTML = Object.entries(SKILLS).map(([k,v]) => `
+  <div class="panel reveal"><h3>${esc(k)}</h3>${tagsHtml(v)}</div>`).join("");
+
+// Texte qui se tape dans l’en-tête
+(function typeLoop(){
+  const el = $("#typed"); let r = 0, i = 0, del = false;
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) { el.textContent = ROLES[0]; return; }
+  (function tick(){
+    const w = ROLES[r];
+    el.textContent = w.slice(0, i);
+    if (!del && i === w.length) { del = true; return setTimeout(tick, 1600); }
+    if (del && i === 0) { del = false; r = (r+1) % ROLES.length; }
+    i += del ? -1 : 1;
+    setTimeout(tick, del ? 35 : 70);
+  })();
+})();
+
+// Apparition au défilement
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), {threshold:.12});
+document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+// Lien actif dans le menu
+const secs = [...document.querySelectorAll("main section[id]")];
+const nav = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) document.querySelectorAll(".links a").forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + e.target.id));
+}), {rootMargin:"-45% 0px -50% 0px"});
+secs.forEach(s => nav.observe(s));
+
+// Réseau de points interactif (clin d’œil à la data) : réagit à la souris
+(function network(){
+  const cv = $("#net"), ctx = cv.getContext("2d");
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  let w, h, pts = [], mouse = {x:-999, y:-999};
+  const css = n => getComputedStyle(root).getPropertyValue(n).trim();
+  function size(){
+    const r = cv.getBoundingClientRect(), d = devicePixelRatio || 1;
+    w = cv.width = r.width * d; h = cv.height = r.height * d;
+    const n = Math.min(70, Math.floor(r.width / 16));
+    pts = Array.from({length:n}, () => ({x:Math.random()*w, y:Math.random()*h, vx:(Math.random()-.5)*.4*d, vy:(Math.random()-.5)*.4*d}));
+  }
+  size(); addEventListener("resize", size);
+  cv.parentElement.addEventListener("pointermove", e => {
+    const r = cv.getBoundingClientRect(), d = devicePixelRatio || 1;
+    mouse = {x:(e.clientX - r.left)*d, y:(e.clientY - r.top)*d};
+  });
+  (function draw(){
+    ctx.clearRect(0,0,w,h);
+    const green = css("--green"), gold = css("--gold"), d = devicePixelRatio || 1, reach = 130*d;
+    pts.forEach((p,i) => {
+      p.x += p.vx; p.y += p.vy;
+      if (p.x<0||p.x>w) p.vx*=-1; if (p.y<0||p.y>h) p.vy*=-1;
+      for (let j=i+1;j<pts.length;j++){
+        const q = pts[j], dist = Math.hypot(p.x-q.x, p.y-q.y);
+        if (dist < reach){ ctx.globalAlpha = (1-dist/reach)*.35; ctx.strokeStyle = green; ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(q.x,q.y); ctx.stroke(); }
+      }
+      const m = Math.hypot(p.x-mouse.x, p.y-mouse.y), near = m < 160*d;
+      if (near){ ctx.globalAlpha = (1-m/(160*d))*.7; ctx.strokeStyle = gold; ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(mouse.x,mouse.y); ctx.stroke(); }
+      ctx.globalAlpha = near ? .95 : .5; ctx.fillStyle = near ? gold : green;
+      ctx.beginPath(); ctx.arc(p.x,p.y,(near?3.5:2.2)*d,0,6.283); ctx.fill();
     });
-    box.appendChild(b);
-  });
-  document.getElementById("year").textContent=new Date().getFullYear();
-  var root=document.documentElement;
-  document.getElementById("theme").addEventListener("click",function(){
-    var dark=root.dataset.theme?root.dataset.theme==="dark":matchMedia("(prefers-color-scheme: dark)").matches;
-    root.dataset.theme=dark?"light":"dark";
-  });
+    requestAnimationFrame(draw);
+  })();
 })();
 </script>
 </body>
